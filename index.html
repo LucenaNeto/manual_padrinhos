@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Manual dos Padrinhos - Anne e Carlos</title>
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg-page: #f7efe7;
+        --card-bg: #fffdf8;
+        --primary: #c7653b;
+        --primary-soft: #f1c6a2;
+        --text-main: #4a3a32;
+        --accent-green-1: #4a5a32;
+        --accent-green-2: #6b7c3c;
+        --accent-green-3: #8c9e4b;
+        --accent-beige-1: #d4b08a;
+        --accent-beige-2: #e1c6a3;
+        --accent-beige-3: #f0d9b9;
+        --accent-beige-4: #f7e7cf;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 24px 24px 32px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: var(--bg-page);
+        font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        color: var(--text-main);
+      }
+
+      /* Flores no topo da página */
+      .top-flowers {
+        width: 100%;
+        max-width: 880px;
+        height: 140px;
+        background-image: url("images/floral-top-left.png"); /* TROCAR pelo nome do seu PNG */
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: contain;
+        margin-bottom: -40px; /* aproxima do card */
+        pointer-events: none;
+      }
+
+      .card {
+        position: relative;
+        background: var(--card-bg);
+        max-width: 880px;
+        width: 100%;
+        border-radius: 28px;
+        border: 8px solid var(--primary-soft);
+        padding: 40px 32px 32px;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Florais nos cantos do card */
+      .corner {
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        pointer-events: none;
+      }
+
+      .corner.top-left {
+        top: -40px;
+        left: -40px;
+        background-image: url("images/floral-top-left.png");
+      }
+
+      .corner.top-right {
+        top: -40px;
+        right: -40px;
+        background-image: url("images/floral-top-right.png");
+      }
+
+      .corner.bottom-left {
+        bottom: -40px;
+        left: -40px;
+        background-image: url("images/floral-bottom-left.png");
+      }
+
+      .corner.bottom-right {
+        bottom: -40px;
+        right: -40px;
+        background-image: url("images/floral-bottom-right.png");
+      }
+
+      .card-inner {
+        max-width: 640px;
+        margin: 0 auto;
+      }
+
+      .center {
+        text-align: center;
+      }
+
+      .hero-subtitle {
+        font-family: "Playfair Display", serif;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        margin-bottom: 4px;
+        color: var(--primary);
+      }
+
+      .hero-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.4rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      .hero-names {
+        margin-top: 16px;
+        font-family: "Great Vibes", cursive;
+        font-size: 2.4rem;
+        color: var(--primary);
+      }
+
+      .hero-date {
+        margin-top: 4px;
+        font-family: "Playfair Display", serif;
+        font-size: 0.95rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+      }
+
+      .divider {
+        margin: 24px auto 20px;
+        width: 120px;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--primary),
+          transparent
+        );
+      }
+
+      h2.section-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin: 0 0 12px;
+      }
+
+      p {
+        font-size: 0.98rem;
+        line-height: 1.7;
+        margin: 0 0 10px;
+      }
+
+      /* Blocos internos */
+      .section-block {
+        margin-top: 32px;
+        padding: 24px 22px;
+        border-radius: 24px;
+        background: rgba(255, 253, 248, 0.98);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.04);
+        overflow: hidden; /* garante que imagens não “saiam” do bloco */
+      }
+
+      .section-block + .section-block {
+        margin-top: 24px;
+      }
+
+      .section-block .section-title {
+        text-align: left;
+      }
+
+      .letter .section-title {
+        text-align: center;
+      }
+
+      .letter {
+        margin-bottom: 0;
+        text-align: center;
+      }
+
+      .letter p {
+        text-align: justify;
+      }
+
+      .letter p:last-child {
+        margin-bottom: 0;
+      }
+
+      .arrival {
+        margin-top: 16px;
+        font-weight: 500;
+      }
+
+      /* Salve esta data – tudo centralizado */
+      .save-the-date {
+        margin-top: 24px;
+        padding: 18px 18px 16px;
+        border-radius: 18px;
+        border: 1px dashed var(--primary-soft);
+        background: rgba(241, 198, 162, 0.12);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .save-the-date h3 {
+        margin: 0 0 6px;
+        font-family: "Playfair Display", serif;
+        font-size: 0.9rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .save-the-date .date-big {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        letter-spacing: 0.28em;
+        margin: 4px 0;
+        text-align: center;
+        white-space: nowrap; 
+      }
+
+      .save-the-date .time {
+        margin: 4px 0 0;
+        font-size: 0.95rem;
+      }
+
+      .block-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.05rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .block {
+        font-size: 0.95rem;
+      }
+
+      .block p {
+        text-align: justify;
+      }
+      .tip {
+        font-size: 0.85rem;
+        opacity: 0.9;
+        margin-top: 6px;
+        text-align: left;
+      }
+
+      .palette {
+        display: flex;
+        gap: 8px;
+        margin: 14px 0 8px;
+      }
+
+      .swatch {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+      }
+
+      .olive-1 {
+        background: var(--accent-green-1);
+      }
+
+      .olive-2 {
+        background: var(--accent-green-2);
+      }
+
+      .olive-3 {
+        background: var(--accent-green-3);
+      }
+
+      .beige-1 {
+        background: var(--accent-beige-1);
+      }
+
+      .beige-2 {
+        background: var(--accent-beige-2);
+      }
+
+      .beige-3 {
+        background: var(--accent-beige-3);
+      }
+
+      .beige-4 {
+        background: var(--accent-beige-4);
+      }
+
+      .inspire {
+        margin-top: 10px;
+        font-family: "Playfair Display", serif;
+        font-size: 0.9rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      /* Galeria de fotos – maiores e 100% dentro do bloco */
+      .gallery {
+        display: flex;
+        gap: 18px;
+        margin-top: 14px;
+        align-items: stretch;
+      }
+
+      .gallery img {
+        flex: 1 1 0;
+        display: block;
+        width: 100%;
+        height: auto;            /* deixa a altura livre */
+        max-height: 260px;       /* limite de altura, pode ajustar */
+        object-fit: contain;     /* NÃO corta a imagem, só encaixa */
+        border-radius: 24px;
+        padding: 18px;
+        background: #fffdf8;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
+      }
+
+
+      .site-section {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+        text-align: center;
+      }
+
+      .site-section h2 {
+        margin: 0 0 6px;
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .site-section p {
+        margin-bottom: 14px;
+      }
+
+      .site-link {
+        display: inline-block;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid var(--primary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--primary);
+        background: rgba(199, 101, 59, 0.04);
+      }
+
+      .site-link:hover {
+        background: rgba(199, 101, 59, 0.09);
+      }
+
+      @media (max-width: 720px) {
+        body {
+          padding: 16px 16px 24px;
+        }
+
+        .top-flowers {
+          height: 100px;
+          margin-bottom: -30px;
+        }
+
+        .card {
+          padding: 28px 18px 24px;
+        }
+
+        .card-inner {
+          max-width: 100%;
+        }
+
+        .hero-title {
+          font-size: 1.9rem;
+        }
+
+        .hero-names {
+          font-size: 2rem;
+        }
+
+        .gallery {
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 480px) {
+        .save-the-date .date-big {
+          font-size: 1.2rem;     /* um pouco menor no celular */
+          letter-spacing: 0.18em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Flores no topo -->
+    <div class="top-flowers"></div>
+
+    <main class="card">
+      <!-- cantos “florais” -->
+      <div class="corner top-left"></div>
+      <div class="corner top-right"></div>
+      <div class="corner bottom-left"></div>
+      <div class="corner bottom-right"></div>
+
+      <div class="card-inner">
+        <!-- Cabeçalho -->
+        <section class="center">
+          <div class="hero-subtitle">Manual dos</div>
+          <h1 class="hero-title">Padrinhos</h1>
+          <div class="hero-names">Anne e Carlos</div>
+          <div class="hero-date">28 • 03 • 26</div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Bloco Carta -->
+        <section class="section-block letter">
+          <h2 class="section-title">Queridos padrinhos</h2>
+          <p>
+            Existem pessoas que Deus coloca em nossas vidas para caminhar sempre
+            ao nosso lado, compartilhando alegrias, sonhos e também os desafios
+            da vida. Ter vocês ao nosso lado nesse momento tão importante será
+            uma imensa alegria!
+          </p>
+
+          <div class="save-the-date">
+            <h3>Salve esta data</h3>
+            <p class="date-big">28 | 03 | 2026</p>
+            <p class="time">às 15:30</p>
+          </div>
+
+          <p class="arrival">
+            Pedimos que vocês cheguem com 30min de antecedência no local, às
+            15h.
+          </p>
+        </section>
+
+        <!-- Bloco Madrinha -->
+        <section class="section-block">
+          <div class="block">
+            <div class="block-title">Madrinha</div>
+            <p>
+              Para o nosso grande dia pedimos que você use um vestido longo, sem
+              estampas, no modelo de sua preferência, seguindo um dos tons
+              indicados de verde oliva. A fita em sua bolsa poderá te ajudar
+              nessa escolha.
+            </p>
+
+            <p class="tip">Paleta de cores:</p>
+            <div class="palette">
+              <span class="swatch olive-1"></span>
+              <span class="swatch olive-2"></span>
+              
+            </div>
+
+            <div class="inspire">Inspire-se</div>
+            <div class="gallery">
+              <img
+                src="images/madrinha-1.png"
+                alt="Referência de vestido para madrinha"
+              />
+              <img
+                src="images/madrinha-2.png"
+                alt="Referência de vestido para madrinha"
+              />
+              <img
+                src="images/madrinha-3.png"
+                alt="Referência de vestido para madrinha"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Bloco Padrinho -->
+        <section class="section-block">
+          <div class="block">
+            <div class="block-title">Padrinho</div>
+            <p>
+              Para o nosso grande dia pedimos que você use um terno na cor
+              bege, camisa social branca e gravata reta bege. Mandamos um
+              pequeno tecido para te ajudar na escolha do tom.
+            </p>
+
+            <p class="tip">Paleta de cores:</p>
+            <div class="palette">
+              <span class="swatch beige-1"></span>
+              <span class="swatch beige-2"></span>
+              
+            </div>
+
+            <div class="inspire">Inspire-se</div>
+            <div class="gallery">
+              <img
+                src="images/padrinho-1.png"
+                alt="Referência de terno para padrinho"
+              />
+              <img
+                src="images/padrinho-2.png"
+                alt="Referência de terno para padrinho"
+              />
+              <img
+                src="images/padrinho-3.png"
+                alt="Referência de terno para padrinho"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Bloco Site do casal -->
+        <section class="section-block site-section">
+          <h2>Site do casal</h2>
+          <p>
+            Aqui você encontra mais informações sobre o casamento, lista de
+            presentes e detalhes do grande dia.
+          </p>
+          <!-- Troque o href abaixo pelo link real do site -->
+          <a
+            class="site-link"
+            href="https://noivos.casar.com/anne-e-carlos-2026-03-28#/admin/pagina"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Acessar o site
+          </a>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
